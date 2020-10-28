@@ -12,18 +12,15 @@ from scipy import signal
 import JointAngles_IMU_MA
 import StandingCalib_IMU_MA
 
-
 # Input Data
 staticQuaternions = pd.read_csv('staticQuaternions.csv',header=None)
 # main.m:2
 walkingQuaternions = pd.read_csv('walkingQuaternions.csv',header=None)
 # main.m:3
-staticPelvis_Orientation = staticQuaternions.iloc[:,0:4]
-
+staticPelvis_Orientation[1] = staticQuaternions.iloc[:,0:4]
 # main.m:5
-staticThigh_Orientation = [0,0]
 staticThigh_Orientation[1] = staticQuaternions.iloc[:,16:20]
-# main.m:6c
+# main.m:6
 staticThigh_Orientation[2] = staticQuaternions.iloc[:,4:8]
 # main.m:7
 staticShank_Orientation[1] = staticQuaternions.iloc[:,20:24]
@@ -48,39 +45,6 @@ walkingFoot_Orientation[1] = walkingQuaternions.iloc[:,24:28]
 # main.m:18
 walkingFoot_Orientation[2] = walkingQuaternions.iloc[:,12:16]
 # main.m:19
-# # Input Data
-# staticQuaternions = pd.read_csv('staticQuaternions.csv',header=None)
-# # main.m:2
-# walkingQuaternions = pd.read_csv('walkingQuaternions.csv',header=None)
-# # main.m:3
-# staticPelvis_Orientation[1] = staticQuaternions.iloc[:,0:4]
-# # main.m:5
-# staticThigh_Orientation[1] = staticQuaternions.iloc[:,16:20]
-# # main.m:6
-# staticThigh_Orientation[2] = staticQuaternions.iloc[:,4:8]
-# # main.m:7
-# staticShank_Orientation[1] = staticQuaternions.iloc[:,20:24]
-# # main.m:8
-# staticShank_Orientation[2] = staticQuaternions.iloc[:,8:12]
-# # main.m:9
-# staticFoot_Orientation[1] = staticQuaternions.iloc[:,24:28]
-# # main.m:10
-# staticFoot_Orientation[2] = staticQuaternions.iloc[:,12:16]
-# # main.m:11
-# walkingPelvis_Orientation[1] = walkingQuaternions.iloc[:,0:4]
-# # main.m:13
-# walkingThigh_Orientation[1] = walkingQuaternions.iloc[:,16:20]
-# # main.m:14
-# walkingThigh_Orientation[2] = walkingQuaternions.iloc[:,4:8]
-# # main.m:15
-# walkingShank_Orientation[1] = walkingQuaternions.iloc[:,20:24]
-# # main.m:16
-# walkingShank_Orientation[2] = walkingQuaternions.iloc[:,8:12]
-# # main.m:17
-# walkingFoot_Orientation[1] = walkingQuaternions.iloc[:,24:28]
-# # main.m:18
-# walkingFoot_Orientation[2] = walkingQuaternions.iloc[:,12:16]
-# # main.m:19
 # Filter data
 
 Wn = 60 / 2

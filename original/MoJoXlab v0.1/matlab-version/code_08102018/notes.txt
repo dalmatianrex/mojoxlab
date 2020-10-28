@@ -1,0 +1,45 @@
+1. Retrieve quaternion data for a particular person, for 7 sensors
+
+Subject 2, Session 1,
+Static = 2
+Walk = 8,9,10,11,12
+Squat = 5
+Jump = 6
+
+Static = 17
+Walk = 20,21,22,23,24
+Squat = 18
+Jump = 19
+
+---
+
+Subject 2, Session 2,
+Static = 1
+Walk = 5,6,7,8,9
+Squat = 3
+Jump = 4
+
+Static = 13
+Walk = 17,18,19,20,21
+Squat = 15
+Jump = 16
+
+/Users/riasatislam/Documents/OU_PhD/cardiff backup/data/Subj2/Session1/Exp/Trial-002#My MVN System.mvnx
+
+/Users/riasatislam/Documents/OU_PhD/cardiff backup/data/Subj2/Session1/Exp/Trial-008#My MVN System.mvnx
+
+l = length(tree.subject.frames.frame);
+for i = 3:l
+a(i,5:8) = tree.subject.frames.frame(i).sensorOrientation(1:4)
+end
+
+b = a(3:end,1:4)
+
+I have done the above code using extractDataFromMvnx.m file.
+
+Also, I have used that into, modified_UseFunction_Data_Mohammad_Test.m to test the code.
+
+Now need to update main.m to:
+
+take two csv file as input (static and dynamic - 7 sensor quaternions)
+output a csv file with joint angles - 3 joints, 2,3 planes, for each side
